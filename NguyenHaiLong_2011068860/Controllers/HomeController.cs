@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using NguyenHaiLong_2011068860.ViewModels;
 
 namespace NguyenHaiLong_2011068860.Controllers
 {
@@ -20,7 +21,12 @@ namespace NguyenHaiLong_2011068860.Controllers
                 .Include(c => c.Lecturer)
                 .Include(c => c.Category)
                 .Where(c => c.DateTime > DateTime.Now);
-            return View(upcommingCourses);
+            var viewModel = new CourseViewModel
+            {
+                UpcommingCourses = upcommingCourses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
         }
         public ActionResult About()
         {

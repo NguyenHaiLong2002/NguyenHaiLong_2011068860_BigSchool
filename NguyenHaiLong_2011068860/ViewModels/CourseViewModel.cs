@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
 
@@ -24,5 +25,7 @@ namespace NguyenHaiLong_2011068860.ViewModels
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
+        public IEnumerable<Course> UpcommingCourses { get; set; }
+        public bool ShowAction { get; set; }
     }
 }
